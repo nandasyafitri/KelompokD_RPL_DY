@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login</title>
+    <title>Login </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -79,21 +79,6 @@
                 <p for="password">Password</p>
                 <input class="form-control" type="password" name="password" placeholder="masukkan password" />
             </div>
-            <?php if ($this->session->flashdata('msgg') == TRUE) : ?>
-              <div class="alert alert-danger fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Info!</strong><?php echo $this->session->flashdata('msgg')?>
-              </div>
-            <?php endif; ?>
-
-            <?php if ($this->session->flashdata('msg') == TRUE) : ?>
-
-              <div class="alert alert-danger fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Info!</strong><?php echo $this->session->flashdata('msg')?>
-              </div>
-
-            <?php endif; ?>
             <input type="submit" class="btn btn-success btn-block" value="login" />
         </form>
         </div>
@@ -113,13 +98,7 @@
           </div>
         </div>
         <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Squadfree
-          -->
-          <a href="https://bootstrapmade.com/bootstrap-one-page-templates/"></a>
+          
         </div>
       </div>
     </div>
