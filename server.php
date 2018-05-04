@@ -76,7 +76,16 @@
       if(empty($password)){
         array_push($errors, "Password harus diisi");
       }
-
+	    
+	//menulis feedback
+	if(isset($_POST["kirim"])){
+		$username = mysqli_real_escape_string($db,$_POST["username"]);
+		$feedback = mysqli_real_escape_string($db,$_POST["feedback"]);
+		
+		$syntax = "insert into feedback (username, feedback) values ('$username','$feedback')";
+		 mysqli_query($db, $syntax);
+	}    
+	    
       if(count($errors)==0){
         $password = md5($password);
         $query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
