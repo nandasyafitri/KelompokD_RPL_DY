@@ -63,34 +63,6 @@
         }
       }
     }
-	
-	//login karyawan
-    if(isset($_POST['loginkaryawan'])){
-      $username = mysqli_real_escape_string($db,$_POST['username']);
-      $password = mysqli_real_escape_string($db,$_POST['password']);
-
-      //pastikan form diisi
-      if(empty($username)){
-        array_push($errors, "Username harus diisi");
-      }
-      if(empty($password)){
-        array_push($errors, "Password harus diisi");
-      }
-
-      if(count($errors)==0){
-        $password = md5($password);
-        $query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
-        $result = mysqli_query($db, $query);
-        if(mysqli_num_rows($result)==1){
-          $_SESSION['username'] = $username;
-          $_SESSION['success'] = "Anda telah login";
-          header('location: halaman_karyawan.php'); //didirect ke laman home
-        }else{
-          array_push($errors, "username/password salah");
-          header('location: loginkaryawan.php');
-        }
-      }
-    }
 
 
     //Logout
@@ -102,4 +74,3 @@
 
 
  ?>
-
