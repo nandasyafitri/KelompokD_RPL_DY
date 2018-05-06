@@ -18,6 +18,11 @@
     <!-- Squad theme CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link href="color/default.css" rel="stylesheet">
+    <style>
+		.msg{
+			color:red;
+		}
+	</style>
 </head>
 <body id="page-top" class="bg-light" data-spy="scroll" data-target=".navbar-custom">
 
@@ -41,7 +46,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="login.php">Login Pengunjung</a></li>
-              <li><a href="login.php">Login Karyawan</a></li>
+              <li><a href="loginkaryawan.php">Login Karyawan</a></li>
             </ul>
           </li>
         </ul>
@@ -74,7 +79,7 @@
 
           <!-- Tampilkan Validasi Error-->
           <?php include('errors.php'); ?>
-
+            <span class="msg"><?php echo $msg; ?></span>
             <div class="form-group">
                 <p for="username">Username</p>
                 <input class="form-control" type="text" name="username" placeholder="Contoh: nandasyafitri" />
