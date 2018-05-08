@@ -2,7 +2,7 @@
   $username = "";
   $email = "";
   $errors = array();
-  $db = mysqli_connect('localhost','root','', 'pbw01');
+  $db = mysqli_connect('localhost','root','', 'rpl');
   $msg = "";
  	//jika button register diklik
   if(isset($_POST['register'])){
