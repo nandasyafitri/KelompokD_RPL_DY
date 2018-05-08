@@ -74,7 +74,7 @@
         $result = mysqli_query($db, $query);
         if(mysqli_num_rows($result)==1){
           $_SESSION['username'] = $username;
-          $_SESSION['success'] = "Anda telah login";
+          $_SESSION['login'] = true;
           header('location: halaman_depan.php'); //didirect ke laman home
         }else{
           array_push($errors, "username/password tidak terdaftar");
@@ -101,7 +101,7 @@
         $result = mysqli_query($db, $query);
         if(mysqli_num_rows($result)>=1){
           $_SESSION['username'] = $username;
-          $_SESSION['success'] = "Anda telah login";
+          $_SESSION['login'] = true;
 		  if($username=="admin"){
 			  header('location: halaman_admin.php'); 
 		  } else{
@@ -121,13 +121,5 @@
 		$syntax = "insert into feedback (username, feedback) values ('$username','$feedback')";
 		 mysqli_query($db, $syntax);
 	}
-
-    //Logout
-    if(isset($_GET['logout'])){
-      session_destroy();
-      unset($_SESSION['username']);
-      header('location: index.php');
-    }
-
 
  ?>
