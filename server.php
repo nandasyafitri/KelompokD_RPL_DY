@@ -109,6 +109,33 @@
       }
     }
 	
+	//login admin
+    if(isset($_POST['loginadmin'])){
+      $username = mysqli_real_escape_string($db,$_POST['username']);
+      $password = mysqli_real_escape_string($db,$_POST['password']);
+
+      //pastikan form diisi
+      if(empty($username)){
+        array_push($errors, "Username harus diisi");
+      }
+      if(empty($password)){
+        array_push($errors, "Password harus diisi");
+      }
+
+      if(count($errors)==0){
+        $password = md5($password);
+        $query = "SELECT * FROM `users` WHERE username='admin' AND password='admin'";
+        $result = mysqli_query($db, $query);
+        if(mysqli_num_rows($result)==1){
+          $_SESSION['username'] = $username;
+          $_SESSION['success'] = "Anda telah login";
+          header('location: halaman_admin.php'); //didirect ke laman home
+        }else{
+          array_push($errors, "username/password tidak terdaftar");
+        }
+      }
+    }
+	
 	//menulis feedback
 	if(isset($_POST["kirim"])){
 		$username = mysqli_real_escape_string($db,$_POST["username"]);
