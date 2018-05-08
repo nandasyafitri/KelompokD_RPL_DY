@@ -1,4 +1,4 @@
-<?php include('server.php'); ?>
+<?php include('koneksi_feedback.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +46,7 @@
     </div>
     <!-- /.container -->
   </nav>
-  
+
 <!-- writefeedback -->
 <section id="writefeedback" class="home-section text-center">
 <div class="container">
@@ -58,23 +58,40 @@
          <form action="feedback.php" method="POST">
 					 <div class="row">
                             <div class="col-sm-12 form-group">
-                                <label for="username"> Username:</label>
-                                <input type="text" class="form-control" id="username" placeholder="Masukkan Username" name="username" required>
+                                <label for="username">Nama atau Username:</label>
+                                <input type="text" class="form-control" id="username" placeholder="Masukkan nama atau Username" name="username" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="feedback"> Feedback Anda:</label>
-                                <textarea class="form-control" type="textarea" name="feedback" id="feedback" placeholder="Sampaikan Feedback anda disini..." maxlength="6000" rows="7"></textarea>
+                                <textarea class="form-control" type="textarea" name="feedback" id="feedback" placeholder="Sampaikan Feedback anda disini..." maxlength="6000" rows="7" required></textarea>
                             </div>
                         </div>
-                               <input type="submit" class="btn btn-success btn-block" name="kirim" value="Kirim" />
+                               <input type="submit" class="btn btn-success btn-block" name="kirim" value="Kirim">
                         </div>
                     </form>
         </div>
-
     </div>
 </div>
+<?php
+  if(isset($_POST['kirim'])){
+    $username = mysqli_real_escape_string($mysqli, $_POST['username']);
+    $feedback = mysqli_real_escape_string($mysqli, $_POST['feedback']);
+    $errors = 0;
+    if(empty($feedback)){
+      echo "Feedback kosong!";
+      ++$errors;
+    }
+    if($errors==0) {
+      $sql= mysqli_query($mysqli, "INSERT INTO feedback(username,feedback) values ('$username','$feedback')");
+	  header('location: lihat_feedback.php');
+    }
+
+  }
+
+
+ ?>
 <footer>
   <div class="container">
     <div class="row">
