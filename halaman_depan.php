@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if($_SESSION['login']==false){
+		header('location: login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +141,7 @@
           <li><a href="#">Pesan Menu</a></li>
           <li><a href="#">Order</a></li>
           <li><a href="#">Feedback</a></li>
-          <li><a href="login.php">Logout</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -156,7 +162,7 @@
 
     <?php if(isset($_SESSION['username'])): ?>
       <p>Welcome  <strong><?php echo $_SESSION['username']; ?></strong></p>
-      <p><a href="Halaman_depan.php">Logout</a></p>
+      <p><a href="index.php">Logout</a></p>
     <?php endif ?>
   </div>
 <section id="tempat">

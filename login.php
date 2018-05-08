@@ -1,5 +1,10 @@
-<?php include('server.php'); ?>
+<?php
+ session_start();
 
+ // set session
+ $_SESSION['login'] = false;
+?>
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
