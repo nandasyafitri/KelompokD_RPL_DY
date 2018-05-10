@@ -28,7 +28,7 @@
     }
 
 
-    /* Clear floats after the columns */
+    /* Clear floats after the columns edit */
     .row:after {
         padding-bottom: 20px;
         content: "";
