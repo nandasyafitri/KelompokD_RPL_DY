@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Mei 2018 pada 09.07
--- Versi Server: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: May 10, 2018 at 08:31 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `feedback`
+-- Table structure for table `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -35,7 +35,7 @@ CREATE TABLE `feedback` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `feedback`
+-- Dumping data for table `feedback`
 --
 
 INSERT INTO `feedback` (`id_feedback`, `username`, `feedback`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `feedback` (`id_feedback`, `username`, `feedback`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karyawan`
+-- Table structure for table `karyawan`
 --
 
 CREATE TABLE `karyawan` (
@@ -59,7 +59,7 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `karyawan`
+-- Dumping data for table `karyawan`
 --
 
 INSERT INTO `karyawan` (`id`, `username`, `password`, `jabatan`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `karyawan` (`id`, `username`, `password`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `meja`
+-- Table structure for table `meja`
 --
 
 CREATE TABLE `meja` (
@@ -86,7 +86,7 @@ CREATE TABLE `meja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `meja`
+-- Dumping data for table `meja`
 --
 
 INSERT INTO `meja` (`id`, `no_meja`, `status`, `jumlah_kursi`, `jam`, `tanggal`, `pemesan`, `hp`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `meja` (`id`, `no_meja`, `status`, `jumlah_kursi`, `jam`, `tanggal`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu`
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
@@ -126,23 +126,27 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `menu`
+-- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`id`, `nama_menu`, `harga`, `rating`, `lama_pembuatan`, `gambar`, `hp`) VALUES
-('drink_01', 'Teh Hijau Tarek', 10000, 0, 10, NULL, NULL),
-('drink_02', 'Chocolate', 8000, 0, 10, NULL, NULL),
-('drink_03', 'Milkshake', 15000, 0, 15, NULL, NULL),
-('drink_04', 'Lemon Tea', 7000, 0, 8, NULL, NULL),
-('food_01', 'Roti Bakar Oreo', 10000, 0, 15, NULL, NULL),
-('food_02', 'Kentang Goreng', 15000, 0, 20, NULL, NULL),
-('food_03', 'Indomie Rebus', 15000, 0, 20, NULL, NULL),
-('food_04', 'Pisang Goreng', 8000, 0, 10, NULL, NULL);
+('drink_01', 'Teh Dingin', 5000, 0, 10, NULL, NULL),
+('drink_02', 'Teh Hijau Dingin', 8000, 0, 10, NULL, NULL),
+('drink_03', 'Milo Dingin', 7000, 0, 15, NULL, NULL),
+('drink_04', 'Teh Tarik Dingin', 9000, 0, 8, NULL, NULL),
+('drink_05', 'Jus Mangga', 12000, 0, 15, NULL, NULL),
+('drink_06', 'Jus Pisang', 12000, 0, 20, NULL, NULL),
+('food_01', 'Nasi Goreng', 10000, 0, 20, NULL, NULL),
+('food_02', 'Nasi Goreng Pattaya', 15000, 0, 10, NULL, NULL),
+('food_03', 'Nasi Uduk', 15000, 0, 15, NULL, NULL),
+('food_04', 'Nasi Ayam Geprek', 15000, 0, 15, NULL, NULL),
+('food_05', 'Mie Aceh', 10000, 0, 15, NULL, NULL),
+('food_06', 'Martabak Telur', 8000, 0, 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -156,7 +160,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `email`, `password`, `activation`, `status`) VALUES
@@ -206,16 +210,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `feedback`
   MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `meja`
 --
 ALTER TABLE `meja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
