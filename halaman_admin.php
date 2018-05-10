@@ -5,5 +5,5 @@
 	}
 ?>
 <?php
-	echo "ini halaman admin"
+	echo "ini halaman admin. Welcome"
 ?>
