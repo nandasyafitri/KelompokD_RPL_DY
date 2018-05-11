@@ -152,6 +152,9 @@ input[type="time"]{
 		border-radius: 20px;
 		border-color: none;
 	}
+	.carousel img {
+    	width: 100%;
+	}
 </style>
 </head>
 
@@ -817,7 +820,7 @@ input[type="time"]{
 																	      $jumlah_kursi = $_POST['jumlah_kursi'];
 																	      $pemesan = $_POST['nama'];
 																			  $tanggal = $_POST['tanggal'];
-																	      $jam = $_POST['jam'];
+																	      $jam = $_POST['appt-time'];
 																	      $hp = $_POST['hp'];
 																	      $result = mysqli_query($mysqli, "UPDATE meja SET jumlah_kursi='$jumlah_kursi', pemesan='$pemesan', status='tidak tersedia', jam='$jam', tanggal='$tanggal', hp='$hp' where no_meja='$no_meja'");
 																	      echo "Reservasi Meja berhasil";
@@ -853,15 +856,15 @@ input[type="time"]{
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-         <a href="beverages.html"> <img class="first-slide" src="asset/images/b1.jpg" alt="First slide"></a>
+         <a href="beverages.html"> <img class="first-slide" src="asset/images/kopi.jpg" alt="First slide"></a>
 
         </div>
         <div class="item">
-         <a href="personalcare.html"> <img class="second-slide " src="asset/images/b3.jpg" alt="Second slide"></a>
+         <a href="personalcare.html"> <img class="second-slide " src="asset/images/kopi1.jpg" alt="Second slide"></a>
 
         </div>
         <div class="item">
-          <a href="household.html"><img class="third-slide " src="asset/images/b1.jpg" alt="Third slide"></a>
+          <a href="household.html"><img class="third-slide " src="asset/images/kopi2.jpg" alt="Third slide"></a>
 
         </div>
       </div>
