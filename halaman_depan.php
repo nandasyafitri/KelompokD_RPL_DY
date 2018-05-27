@@ -42,8 +42,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="asset/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="asset/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -59,15 +57,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="asset/js/move-top.js"></script>
 <script type="text/javascript" src="asset/js/easing.js"></script>
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
+  $(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#main']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+  })
 </script>
 <script>
-function startTime() {
+  function startTime() {
     var today = new Date();
     var h = today.getHours();
     var m = today.getMinutes();
@@ -77,11 +103,11 @@ function startTime() {
     document.getElementById('txt').innerHTML =
     h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
+  }
+  function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
-}
+  }
 </script>
 <style>
 input[type="text"] {
@@ -154,11 +180,18 @@ input[type="time"]{
 	}
 	.carousel img {
     	width: 100%;
+	} 
+	.navbar{
+		position: fixed;
+		background-color: #ffffff;
+	}
+	.navbar-brand{
+		margin-top: -6px;
 	}
 </style>
 </head>
 
-<body>
+<body id="main">
  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header page-scroll">
@@ -193,7 +226,7 @@ input[type="time"]{
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akun Saya<b class="caret"></b></a>
             <ul class="dropdown-menu">
 							<li><a href="reset_password.php">Reset Password</a></li>
-              <li><a href="index.php">Logout</a></li>
+              <li><a href="logout.php">Logout</a></li>
             </ul>
           </li>
 			</ul>
@@ -766,7 +799,7 @@ input[type="time"]{
 <!--reservasi tempat-->
 <div class="">
 	<div class="container">
-	<section id="reservasi_tempat" class="flat-row menu-3">
+	<section id="reservasi_tempat" name="reservasi_tempat" class="flat-row menu-3">
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-md-5">
@@ -908,7 +941,7 @@ input[type="time"]{
 															<h4>Rp10.000</h4>
 														</div>
 														<div class="snipcart-details top_brand_home_details">
-															<form action="#" method="post">
+															<form action="halaman_depan.php" method="post">
 																<fieldset>
 																	<input type="hidden" name="cmd" value="_cart" />
 																	<input type="hidden" name="add" value="1" />
@@ -1022,7 +1055,8 @@ input[type="time"]{
 												<figure>
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
-															<a href="products.html"><img src="asset/images/ayamgeprek.jpg" alt=" " height="244" title=" " /></a> Nasi Ayam Geprek</p>
+															<a href="products.html"><img src="asset/images/ayamgeprek.jpg" alt=" " class="img-responsive"/></a> 
+															<p>Nasi Uduk</p>
 															<div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -1039,7 +1073,7 @@ input[type="time"]{
 																	<input type="hidden" name="cmd" value="_cart" />
 																	<input type="hidden" name="add" value="1" />
 																	<input type="hidden" name="business" value=" " />
-																	<input type="hidden" name="item_name" value="Nasi Ayam Geprek" />
+																	<input type="hidden" name="item_name" value="Nasi Ayam Geprek"/>
 																	<input type="hidden" name="amount" value="15000" />
 																	<input type="hidden" name="currency_code" value="IDR" />
 																	<input type="hidden" name="return" value=" " />
@@ -1348,7 +1382,7 @@ input[type="time"]{
 																	<input type="hidden" name="business" value=" " />
 																	<input type="hidden" name="item_name" value="Jus Mangga" />
 																	<input type="hidden" name="amount" value="12000" />
-																																	<input type="hidden" name="currency_code" value="IDR" />
+																	<input type="hidden" name="currency_code" value="IDR" />
 																	<input type="hidden" name="return" value=" " />
 																	<input type="hidden" name="cancel_return" value=" " />
 																	<input type="submit" name="submit" value="Pesan" class="button" />
