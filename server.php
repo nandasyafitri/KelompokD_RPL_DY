@@ -32,34 +32,30 @@
 		if($count==0) {
       		$password = md5($password); //enkripsi password sebelum disimpan ke database
 			$activation=md5($email.time()); // encrypted email+timestamp
-			$count=mysqli_query($db,"SELECT id FROM users WHERE email='".$email."'");
+			$count=mysqli_query($db,"SELECT username FROM users WHERE email='".$email."'");
 			// email check
 			if(mysqli_num_rows($count) < 1){
       		$sql = "INSERT INTO users (username, email, password, activation) VALUES ('$username','$email', '$password', '$activation')";
 	  		 mysqli_query($db, $sql);
 			// then lets send user verification link to their email using the phpmailer function
-			$base_url='http://localhost/RPL/';	
-	  		$message = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get 
-						started using your Website account. <br/> <br/> 
-						<a href="'.$base_url.'activation.php?code='.$activation.'">'.$base_url.'activation.php/'.$activation.'</a>';	
+			$base_url='http://localhost/RPL/';
+	  		$message = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get
+						started using your Website account. <br/> <br/>
+						<a href="'.$base_url.'activation.php?code='.$activation.'">'.$base_url.'activation.php/'.$activation.'</a>';
 			require 'email_verification.php';
 			sending($message,$email,$msg);
-			$msg="Email confirmation has been sent"; 			
-			} 
+			$msg="Email confirmation has been sent";
+			}
 		} else {
-				array_push($errors, "The email is already taken, please try new."); 
-			}	
+				array_push($errors, "The email is already taken, please try new.");
+			}
 	}
- 	
+
   }
-
-
-
     //login
     if(isset($_POST['login'])){
       $username = mysqli_real_escape_string($db,$_POST['username']);
       $password = mysqli_real_escape_string($db,$_POST['password']);
-
       //pastikan form diisi
       if(empty($username)){
         array_push($errors, "Username harus diisi");
@@ -67,7 +63,6 @@
       if(empty($password)){
         array_push($errors, "Password harus diisi");
       }
-
       if(count($errors)==0){
         $password = md5($password);
         $query = "SELECT * FROM `users` WHERE (username='$username' AND password='$password') AND status='1'";
@@ -75,18 +70,17 @@
         if(mysqli_num_rows($result)==1){
           $_SESSION['username'] = $username;
           $_SESSION['login'] = true;
-          header('location: halaman_depan.php'); //didirect ke laman home
+          header('location: pilihan.php'); //didirect ke laman home
         }else{
           array_push($errors, "username/password tidak terdaftar");
         }
       }
     }
-	
+
 	//login karyawan
     if(isset($_POST['loginkaryawan'])){
       $username = mysqli_real_escape_string($db,$_POST['username']);
       $password = mysqli_real_escape_string($db,$_POST['password']);
-
       //pastikan form diisi
       if(empty($username)){
         array_push($errors, "Username harus diisi");
@@ -94,7 +88,6 @@
       if(empty($password)){
         array_push($errors, "Password harus diisi");
       }
-
       if(count($errors)==0){
         $password = md5($password);
         $query = "SELECT * FROM `karyawan` WHERE username='$username' AND password='$password'";
@@ -103,14 +96,45 @@
           $_SESSION['username'] = $username;
           $_SESSION['login'] = true;
 		  if($username=="admin"){
-			  header('location: halaman_admin.php'); 
+			  header('location: halaman_admin.php');
 		  } else{
-          		header('location: halaman_karyawan.php'); //didirect ke laman home
+          		header('location: orderhistory.php');
 		  	}
         }else{
           array_push($errors, "username/password tidak terdaftar");
         }
       }
     }
+
+	//menulis feedback
+	if(isset($_POST["kirim"])){
+		$username = mysqli_real_escape_string($db,$_POST["username"]);
+		$feedback = mysqli_real_escape_string($db,$_POST["feedback"]);
+
+		$syntax = "insert into feedback (username, feedback) values ('$username','$feedback')";
+		 mysqli_query($db, $syntax);
+	}
 	
+	
+    if(isset($_POST['pesan_tempat'])){
+        if(($_POST['no_meja']>0)&&($_POST['jumlah_kursi']>0)){
+            $no_meja = $_POST['no_meja'];
+            $jumlah_kursi = $_POST['jumlah_kursi'];
+            $username = $_SESSION['username'];
+			$query = "SELECT status FROM `meja` WHERE no_meja='$no_meja'";
+			$results = mysqli_query($db, $query);
+			$resultss = mysqli_fetch_array($results);
+			if($resultss['status']=='tersedia'){
+				$msg="Reservasi berhasil !";
+            	$result = mysqli_query($db, "UPDATE meja SET jumlah_kursi='$jumlah_kursi', username='$username', status='tidak tersedia' where no_meja='$no_meja'");
+            	header('location: tampil_meja.php#pilih_meja');
+			}else{
+				$msg="Pilih meja yang kosong !";
+			}
+        }
+        else {
+            $msg="Reservasi Meja gagal !";
+        }
+    }
+                                  
  ?>
