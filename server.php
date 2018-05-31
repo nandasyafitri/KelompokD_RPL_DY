@@ -113,13 +113,4 @@
       }
     }
 	
-	//menulis feedback
-	if(isset($_POST["kirim"])){
-		$username = mysqli_real_escape_string($db,$_POST["username"]);
-		$feedback = mysqli_real_escape_string($db,$_POST["feedback"]);
-		
-		$syntax = "insert into feedback (username, feedback) values ('$username','$feedback')";
-		 mysqli_query($db, $syntax);
-	}
-
  ?>
