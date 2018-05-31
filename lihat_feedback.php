@@ -19,6 +19,12 @@
     <link href="color/default.css" rel="stylesheet">
 
 <style>
+body{
+		background: url('asset/images/img2.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat:no-repeat;
+		}
 .containerr {
   border: 3px solid #ccc;
   background: linear-gradient(#D3CCE3,#E9E4F0);
@@ -70,14 +76,13 @@ h2{
 .button5 {border-radius: 40%;}
 </style>
 </head>
-<body id="page-top" class="bg-light" data-spy="scroll" data-target=".navbar-custom">
-  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header page-scroll">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <h1>D'CAFFE-IN</h1>
         </a>
       </div>
@@ -85,23 +90,51 @@ h2{
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#">Reservasi Meja</a></li>
-          <li><a href="#">Pesan Menu</a></li>
-          <li><a href="#">Order</a></li>
-          <li class="#"><a href="#">Feedback</a></li>
-          <li><a href="login.php">Logout</a></li>
-        </ul>
+					<li class="dropdown">
+            <a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown">Reservasi Tempat <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li><a href="halaman_depan.php#pilih_meja">Lihat Meja</a></li>
+              <li><a href="halaman_depan.php#reservasi_tempat">Pesan Tempat</a></li>
+            </ul>
+          </li>
+					<li><a href="halaman_depan.php#pesan_menu">Pesan Menu</a></li>
+          <li><a href="order_pengunjung.php">Order</a></li>
+					<li class="dropdown">
+            <a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li><a href="lihat_feedback.php">Lihat Feedback</a></li>
+              <li><a href="feedback.php">Tulis Feedback</a></li>
+            </ul>
+          </li>
+					<li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akun Saya<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li><a href="reset_password.php">Reset Password</a></li>
+              <li><a href="index.php">Logout</a></li>
+            </ul>
+          </li>
+			</ul>
       </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
   </nav>
+<!-- header -->
+	<div class="logo_products">
+		<div class="container">
+		<div class="w3ls_logo_products_left1">
+			</div>
+			<div class="w3ls_logo_products_left"></div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
   
 <section id="viewfeedback" class="home-section text-left">
 <div class="container">
 <center><h4>Feedback Pengunjung</h4></center>
 
-<?php include('koneksi_feedback.php');?>
+<?php include('koneksi.php');?>
 <?php $users = mysqli_query($mysqli, "SELECT username FROM feedback ORDER BY id ASC");
       $feeds = mysqli_query($mysqli, "SELECT feedback FROM feedback ORDER BY id ASC");
  ?>
