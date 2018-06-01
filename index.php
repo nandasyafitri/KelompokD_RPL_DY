@@ -48,7 +48,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //web-fonts -->
     <style>
 		body{
-			background-image:url(bg_dotted.png);
+		background: url('asset/images/img2.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat:no-repeat;
+		color: #e96147;
+		}
+		p {
+		color: black;
 		}
 		.daftar-menu,.rincian{
 			margin:0;
@@ -106,8 +113,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div id="m_nav_container" class="m_nav wthree_bg">
                     <nav class="menu menu--sebastian">
                         <ul id="m_nav_list" class="m_nav menu__list">
-                            <li class="m_nav_item menu__item menu__item--current" id="m_nav_item_1">
+                            <li class="m_nav_item menu__item" id="moble_nav_item_0">
                                 <a href="#layanan" class="menu__link"> Layanan </a>
+                            </li>
+							 <li class="m_nav_item menu__item" id="moble_nav_item_2">
+                                <a href="#tentangkami" class="menu__link"> Tentang Kami </a>
                             </li>
                             <li class="m_nav_item menu__item" id="moble_nav_item_2">
                                 <a href="register.php" class="menu__link"> Register </a>
@@ -212,6 +222,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //about -->
 
 <!-- Layanan -->
+<section id="layanan">
     <div class="section-w3ls agileits-gallery text-center" id="portfolio">
         <div class="container">
 			<h3 class="w3ls-title">
@@ -231,7 +242,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </div>
               <div class="service-desc">
                 <h3>Place</h3>
-                <p>Reservasi tempat sebelum datang ke kafe</p>
+                <p><b>Reservasi tempat sebelum datang ke kafe</b></p>
               </div>
             </div>
           </div>
@@ -244,7 +255,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </div>
               <div class="service-desc">
                 <h3>Menu</h3>
-                <p>Reservasi menu sebelum datang ke kafe</p>
+                <p><b>Reservasi menu sebelum datang ke kafe</b></p>
               </div>
             </div>
           </div>
@@ -257,7 +268,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </div>
               <div class="service-desc">
                 <h3>Bill</h3>
-                <p>Lihat rincian order</p>
+                <p><b>Lihat rincian order</b></p>
               </div>
             </div>
           </div>
@@ -271,9 +282,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               </div>
               <div class="service-desc">
                 <h3>Feedback</h3>
-                <p>Lihat review kafe dari pengunjung lain</p>
-                <p>Lihat menu populer melalui rating</p>
-                <p>Berikan feedback seputar pelayanan kafe</p>
+                <p><b>Lihat review kafe</b></p>
+                <p><b>Lihat menu populer melalui rating</b></p>
+                <p><b>Berikan feedback seputar pelayanan kafe<b></p>
               </div>
             </div>
           </div>
@@ -282,7 +293,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 	</div>
 	</div>
+	</section>
   <!-- /Section: services -->
+  <section id="tentangkami">
   <div class="section-w3ls agileits-gallery text-center" id="portfolio">
         <div class="container">
 			<h3 class="w3ls-title"><span>T</span>entang<span> K</span>ami</h3>
@@ -312,7 +325,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  </div>
   </div>
           </div>
-		   </div>
+</section>
 <!--//menu-->
     <!-- services -->
     <div class="panel-sec section-w3ls">
@@ -331,6 +344,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <ul class="footer-nav">
                     <li>
                         <a href="#layanan">Layanan</a>
+                    </li>
+					<li>
+                        <a href="#tentangkami">Tentang Kami</a>
                     </li>
                     <li>
                         <a href="register.php">Register</a>
