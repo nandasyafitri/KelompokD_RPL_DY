@@ -1,4 +1,8 @@
-
+<?php
+ session_start();
+ // set session
+ $_SESSION['login'] = false;
+?>
 <!--Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -258,7 +262,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
           </div>
         </div>
-		
+
         <div class="col-md-3">
           <div class="wow fadeInRight" data-wow-delay="0.2s">
             <div class="service-box">
@@ -297,7 +301,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <h3>Contact Person</h3>
           <p>+6282211276007</p>
       </address>
-          
+
           <div class="widget-contact">
 
 			<address>
