@@ -1,3 +1,8 @@
+<?php
+ session_start();
+ // set session
+ $_SESSION['login'] = false;
+?>
 <?php include('server.php'); ?>
 <!--Author: W3layouts
 Author URL: http://w3layouts.com
@@ -105,7 +110,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div id="m_nav_container" class="m_nav wthree_bg">
                     <nav class="menu menu--sebastian">
                         <ul id="m_nav_list" class="m_nav menu__list">
-                            <li class="m_nav_item menu__item" id="moble_nav_item_1">
+                            <li class="m_nav_item menu__item menu__item--current" id="moble_nav_item_1">
                                 <a href="register.php" class="menu__link"> Register </a>
                             </li>
 							<li class="m_nav_item menu__item" id="moble_nav_item_2">
@@ -135,8 +140,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!--//banner-bottom-->
-	
-	
+
+
 <!-- register -->
 <div class="section-w3ls agileits-gallery text-center" id="portfolio">
 <div class="container">
@@ -177,7 +182,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 </div>
-    
+
     <!-- footer -->
     <div class="agile-footer w3ls-section">
         <div class="container">
