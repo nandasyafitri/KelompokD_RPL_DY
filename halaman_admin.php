@@ -5,6 +5,7 @@
 	}
 ?>
 <?php
+<<<<<<< HEAD
 	echo "ini halaman admin. Welcome"
 ?>
 
@@ -225,3 +226,7 @@ table#t01 th {
   <script src="contactform/contactform.js"></script>
   </body>
   </html>
+=======
+	echo "ini halaman admin"
+?>
+>>>>>>> Praktikum_Budi
