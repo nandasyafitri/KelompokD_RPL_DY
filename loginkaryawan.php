@@ -118,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="m_nav_item menu__item" id="moble_nav_item_2">
                                 <a href="login.php" class="menu__link"> Login Pengunjung </a>
                             </li>
-							<li class="m_nav_item menu__item" id="moble_nav_item_3">
+							<li class="m_nav_item menu__item menu__item--current" id="moble_nav_item_3">
                                 <a href="loginkaryawan.php" class="menu__link"> Login Karyawan </a>
                             </li>
                         </ul>
@@ -161,7 +161,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <p for="password">Password</p>
                 <input class="form-control" type="password" name="password" placeholder="Masukkan password" />
             </div>
-            <input type="submit" class="btn btn-success btn-block" name="loginkaryawan" value="Masuk" />
+            <input type="submit" class="btn btn-success btn-block" name="loginkaryawan" value="Login" />
         </form>
 		 <div class="form-groupp">
 		<p> </p>
