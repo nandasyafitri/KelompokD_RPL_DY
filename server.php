@@ -38,7 +38,7 @@
       		$sql = "INSERT INTO users (username, email, password, activation) VALUES ('$username','$email', '$password', '$activation')";
 	  		 mysqli_query($db, $sql);
 			// then lets send user verification link to their email using the phpmailer function
-			$base_url='http://localhost/RPL/';
+			$base_url='http://localhost/RPLv0.3/';
 	  		$message = 'Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get
 						started using your Website account. <br/> <br/>
 						<a href="'.$base_url.'activation.php?code='.$activation.'">'.$base_url.'activation.php/'.$activation.'</a>';
@@ -96,7 +96,7 @@
           $_SESSION['username'] = $username;
           $_SESSION['login'] = true;
 		  if($username=="admin"){
-			  header('location: halaman_admin.php');
+			  header('location: daftarmeja.php');
 		  } else{
           		header('location: orderhistory.php');
 		  	}
@@ -114,8 +114,8 @@
 		$syntax = "insert into feedback (username, feedback) values ('$username','$feedback')";
 		 mysqli_query($db, $syntax);
 	}
-	
-	
+
+
     if(isset($_POST['pesan_tempat'])){
         if(($_POST['no_meja']>0)&&($_POST['jumlah_kursi']>0)){
             $no_meja = $_POST['no_meja'];
@@ -127,7 +127,7 @@
 			if($resultss['status']=='tersedia'){
 				$msg="Reservasi berhasil !";
             	$result = mysqli_query($db, "UPDATE meja SET jumlah_kursi='$jumlah_kursi', username='$username', status='tidak tersedia' where no_meja='$no_meja'");
-            	header('location: tampil_meja.php#pilih_meja');
+            	header('location: pesan_menu.php');
 			}else{
 				$msg="Pilih meja yang kosong !";
 			}
@@ -136,5 +136,28 @@
             $msg="Reservasi Meja gagal !";
         }
     }
-                                  
+	
+	if(isset($_POST['batal'])){
+		$username=$_SESSION['username'];
+		$no_meja="SELECT no_meja FROM meja where username='$username'";
+		if ($results=mysqli_query($db,$no_meja)){
+                          // Fetch one and one row
+                          while ($row=mysqli_fetch_row($results)){
+                           	$result = mysqli_query($db, "UPDATE meja SET jumlah_kursi='0', username='', status='tersedia' where no_meja='$row[0]'");
+                       		//$result1 = mysqli_query($db,"DELETE FROM pesanan WHERE username='$username'");
+						  }
+                        // Free result set
+                        mysqli_free_result($results);
+		}
+		$pesankan="SELECT * FROM pesanan";
+		if ($results=mysqli_query($db,$pesankan)){
+			while ($row=mysqli_fetch_row($results)){
+                           	//$result = mysqli_query($db, "UPDATE meja SET jumlah_kursi='0', username='', status='tersedia' where no_meja='$row[0]'");
+                       		$result1 = mysqli_query($db,"DELETE FROM pesanan WHERE username='$username'");
+						  }
+                        // Free result set
+                        mysqli_free_result($results);
+		}
+		header('location: pesan_menu.php');	
+	}
  ?>
