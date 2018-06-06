@@ -378,27 +378,31 @@ input,select {
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
+							<li>
+								 <a href="daftarmeja.php">
+										 <i class="fa fa-table"></i>
+										 <span>Meja</span>
+								 </a>
+						 </li>
                 <li>
-                    <a  href="daftarmenu.php">
+                    <a href="daftarmenu.php">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Daftar Menu</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-user"></i>
-                        <span>Profil Saya </span>
-                    </a>
-                    <ul class="sub">
-                    </ul>
-                </li>
-                <li>
-                    <a  href="daftarmeja.php">
-                        <i class="fa fa-table"></i>
-                        <span>Meja</span>
+                    <a href="pembayaran.php">
+                        <i class="fa fa-credit-card"></i>
+                        <span>Pembayaran </span>
                     </a>
                 </li>
-                <li>
+								<li class="sub-menu">
+										<a href="keuangan.php">
+												<i class="fa fa-money"></i>
+												<span>Keuangan </span>
+										</a>
+								</li>
+                 <li>
                     <a class="active" href="daftarfeedback.php">
                         <i class="fa fa-comment"></i>
                         <span>Feedback</span>
@@ -422,37 +426,34 @@ input,select {
 						<div class="agileinfo-grap">
 							<div class="agileits-box">
 								<header class="agileits-box-header clearfix">
+								
+<h1>Kelola Feedback</h1>
  <?php
 		include('koneksi.php');
-
-
 		$result = mysqli_query($mysqli, "SELECT * FROM feedback ORDER BY id_feedback ASC");
-		
-
-
 		if (!$result) {
 			die ('SQL Error: ' . mysqli_error($mysqli));
 		}
-
 		echo '<table>
 				<thead>
 					<tr>
 						<th>id_feedback</th>
 						<th>username</th>
 						<th>isi feedback</th>
+						<th>balasan</th>
 						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>';
-		
 		while ($row = mysqli_fetch_array($result))
 		{
 			echo '<tr>
 					<td width=25% >'.$row['id_feedback'].'</td>
 					<td width=30% >'.$row['username'].'</td>
 					<td width=30% >'.$row['feedback'].'</td>
-					<td width =5%><div id="button" ><a href="#ubah">Ubah</a></div></td>
+					<td width=30% >'.$row['balasan'].'</td>
+					<td width =5%><div id="button" ><a href="#ubah">Balas</a></div></td>
 					<td ><div id="button" ><a href="#hapus">Hapus</a></div></td>
 				</tr>';
 		}
@@ -461,8 +462,6 @@ input,select {
 		</table>';
 ?>					
 								</header>
-                                
-								<div class="agileits-box-body clearfix"></div>
 							</div>
 						</div>
 	<!--//agileinfo-grap-->
@@ -471,30 +470,22 @@ input,select {
 			</div>
 		</div>
 		<!--batas-->
-<div class="agileits-box-body clearfix"></div>
-		  <div class="clearfix"> </div>
-				</div>
-                
-                	<div class="agil-info-calendar">
-		<div class="col-md-6 w3agile-notifications">
-			<div class="notifications">
-				<!--notification start-->
 
-					<header class="panel-heading">
-						Hapus FeedBack
-					</header>
-					<div class="notify-w3ls">
-        
-  <form method="POST" action="">
-<br><p> ID Feedback:</p><input type="number" name="id"  required />   <br />
+<div id="ubah">
+    	<div class="windowubah">
+        	<a href="#" class="close-button-ubah" title="Close">X</a>
+            	<form method="POST" action="">
 
-<br><input type="submit" name="Hapus" value="Hapus"><br/>
-
+        <br><p>Id :</p><input type="text" name="id"  required /> 
+        <br><p>Balasan Feedback :</p> <input class="feedback" type="text" name="balas" required  /> 
+		<br><input type="submit" name="Balas" value="Balas"><br/>
+		
 <?php
-	    if(isset($_POST['Hapus'])){
+	    if(isset($_POST['Balas'])){
 	      if($_POST['id']>0){
-	        $id = $_POST['id'];
-	        $sql= mysqli_query($mysqli, "DELETE FROM feedback WHERE id_feedback='$id';");
+	        $id_feedback = $_POST['id'];
+			$balasan = $_POST['balas'];
+	        $sql = mysqli_query($mysqli, "UPDATE feedback SET balasan = '$balasan' where id_feedback ='$id_feedback'");
 	      }
 	      if($sql){
 	         echo "<script>
@@ -503,18 +494,6 @@ input,select {
 	      }
 	  }
 ?>
- 
-</form>    
-
-<div id="ubah">
-    	<div class="windowubah">
-        	<a href="#" class="close-button-ubah" title="Close">x</a>
-            	<form method="POST" action="">
-
-        <br><p>Id :</p><input type="text" name="id"  required /> 
-        <br><p>Username :</p> <input type="text" name="username"  required />
-        <br><p>feedback :</p> <input class="feedback" type="text" name="feedback" required  /> 
-		<br><input type="submit" name="Ubah" value="Ubah"><br/>
 </form>
 
         </div>
@@ -522,25 +501,26 @@ input,select {
     
     <div id="hapus">
     	<div class="windowhapus">
-        	<a href="#" class="close-button-hapus" title="Close">x</a>
-            	<p>Yakin Ingin Menghapus field ini ? </p>
-                       
-		<form method="POST" action="">
-			<br><input type="submit" name="Hapus" value="Hapus"><br/>
-		</form>
-
+        	<a href="#" class="close-button-hapus" title="Close">X</a>
+            <form method="POST" action="">
+			<p>Masukan Id Feedback:</p><input type="text" name="id"  required /> 
+			<input type="submit" name="Hapus" value="Hapus">
+			<?php
+				if(isset($_POST['Hapus'])){
+					$id_feedback = $_POST['id'];
+					$sql = mysqli_query($mysqli, "DELETE from feedback WHERE id_feedback = '$id_feedback'");
+					$hasil= mysqli_query($mysqli,$sql);
+					if ($hasil)
+					{
+						echo "<script>window.location ='daftarfeedback.php'
+						</script>";
+						}
+					}
+		 ?>
+		 </form>
         </div>
     </div>           
-					</div>
-
-				<!--notification end-->
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-        <!--batas-->
-       
-        <!--batas-->
+		
 </section>
  <!-- footer -->
 		  <div class="footer">
