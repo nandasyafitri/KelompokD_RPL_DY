@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 </script>
 <!-- bootstrap-css -->
 <link rel="stylesheet" href="asset1/css/bootstrap.min.css" >
@@ -42,7 +42,7 @@ tr {background: #f4f7f8;border-bottom: 1px solid #fff; margin-bottom: 5px;}
 tr:nth-child(even) {background: #e8eeef;}
 th, td {text-align: left;padding: 20px;font-weight: 300;}
 tfoot tr {background:none;}
-tfoot td {padding: 10px 2px;font-size: 0.8em; font-style: italic; color: #8a97a0;} 
+tfoot td {padding: 10px 2px;font-size: 0.8em; font-style: italic; color: #8a97a0;}
 
 input,select {
     width: 50%;
@@ -68,7 +68,7 @@ input,select {
 
 .windowhapus {
 	width: 500px;
-	height: 200px;
+	height: 350px;
 	background: #fff;
 	border-radius: 10px;
 	position:absolute;
@@ -93,7 +93,7 @@ input,select {
 	text-align: center;
 	color: black;
 	text-decoration: none;
-	position: relatif;	
+	position: relatif;
 }
 
 /* Memunculkan Jendela Pop Up*/
@@ -117,7 +117,7 @@ input,select {
 
 .windowubah {
 	width: 500px;
-	height: 550px;
+	height: 420px;
 	background: #fff;
 	border-radius: 10px;
 	position:absolute;
@@ -142,7 +142,7 @@ input,select {
 	text-align: center;
 	color: black;
 	text-decoration: none;
-	position: relatif;	
+	position: relatif;
 }
 
 /* Memunculkan Jendela Pop Up*/
@@ -375,27 +375,31 @@ input,select {
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
+							<li>
+								 <a href="daftarmeja.php">
+										 <i class="fa fa-table"></i>
+										 <span>Meja</span>
+								 </a>
+						 </li>
                 <li>
-                    <a  href="daftarmenu.php">
+                    <a class="active" href="daftarmenu.php">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Daftar Menu</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-user"></i>
-                        <span>Profil Saya </span>
-                    </a>
-                    <ul class="sub">
-                    </ul>
-                </li>
-                <li>
-                    <a class="active" href="daftarmeja.php">
-                        <i class="fa fa-table"></i>
-                        <span>Meja</span>
+                    <a href="pembayaran.php">
+                        <i class="fa fa-credit-card"></i>
+                        <span>Pembayaran </span>
                     </a>
                 </li>
-                <li>
+								<li class="sub-menu">
+                    <a href="daftarpesanan.php">
+                        <i class="fa fa-credit-card"></i>
+                        <span>Daftar Pesanan </span>
+                    </a>
+                </li>
+                 <li>
                     <a  href="daftarfeedback.php">
                         <i class="fa fa-comment"></i>
                         <span>Feedback</span>
@@ -419,44 +423,33 @@ input,select {
 						<div class="agileinfo-grap">
 							<div class="agileits-box">
 								<header class="agileits-box-header clearfix">
-                                <?php
+<h1>Kelola Data Meja</h1>
+<?php
 include('koneksi.php');
-
-
 $result = mysqli_query($mysqli, "SELECT * FROM meja");
-		
-
-
 if (!$result) {
 	die ('SQL Error: ' . mysqli_error($mysqli));
 }
-
 echo '<table>
 		<thead>
 			<tr>
-				<th>ID</th>
     			<th>No Meja</th>
 				<th>Status</th>
     			<th>Pemesan</th>
-				<th>Nomor Hp</th>
-				<th>Tanggal</th>
-				<th>Jam</th>
+				<th>Jumlah Kursi</th>
 				<th></th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>';
-		
+
 while ($row = mysqli_fetch_array($result))
 {
 	echo '<tr>
-			<td width=10% >'.$row['id'].'</td>
 			<td width=20% >'.$row['no_meja'].'</td>
             <td width=10% >'.$row['status'].'</td>
-            <td width=20% >'.$row['pemesan'].'</td>
-            <td width=20% >'.$row['hp'].'</td>
-            <td width=20% >'.$row['tanggal'].'</td>
-			<td width=20% >'.$row['jam'].'</td>
+						<td width=20% >'.$row['username'].'</td>
+            <td width=20% >'.$row['jumlah_kursi'].'</td>
 			<td width =5%><div id="button" ><a href="#ubah">Ubah</a></div></td>
 			<td ><div id="button" ><a href="#hapus">Hapus</a></div></td>
 		</tr>';
@@ -464,41 +457,53 @@ while ($row = mysqli_fetch_array($result))
 echo '
 	</tbody>
 </table>';
-?>				
+?>
 
-  
+
     <div id="ubah">
     	<div class="windowubah">
         	<a href="#" class="close-button-ubah" title="Close">x</a>
-            	<form method="POST" action="">
-<br><p>ID:</p><input type="text" name="id" value="" required /> 
+            	<form method="POST" action="daftarmeja.php">
 <br><p>No Meja :</p> <input type="text" name="nomeja" value=""  required />
-<br><p>Status: </p> <input type="text" name="status" value=""required  /> 
-<br><p>Pemesan : </p> <input type="text" name="pemesan"  value="" required  /> 
-<br><p>Tanggal :</p> <input type="date" name="tanggal" value="" required /> 
-<br><p>Jam : </p> <input type="time" name="jam"  /> 
-						
-                       
-
+<br><p>Status: </p> <input type="text" name="status" value=""required  />
+<br><p>Pemesan : </p> <input type="text" name="pemesan"  value="" />
+<br><p>jumlah_kursi :</p> <input type="number" name="jumlah_kursi" value=""/>
 <br><input type="submit" name="Ubah" value="Ubah"><br/>
 </form>
+<?php
+		if(isset($_POST['Ubah'])){
+			$no_meja = $_POST['nomeja'];
+			$status = $_POST['status'];
+			$pemesan = $_POST['pemesan'];
+			$jumlah_kursi = $_POST['jumlah_kursi'];
+				$sql = mysqli_query($mysqli, "UPDATE meja SET no_meja = '$no_meja', status='$status', username='$pemesan', jumlah_kursi='$jumlah_kursi' where no_meja='$no_meja'");
+				echo "<b>"."Edit meja berhasil"."</b>";
+	}
 
+ ?>
         </div>
     </div>
-    
-    <div id="hapus">
-    	<div class="windowhapus">
-        	<a href="#" class="close-button-hapus" title="Close">x</a>
-            	<p>Yakin Ingin Menghapus field ini ? </p>
-                       
-		<form method="POST" action="">
-			<br><input type="submit" name="Hapus" value="Hapus"><br/>
-		</form>
 
-        </div>
-    </div>	
+		<div id="hapus">
+	 	 <div class="windowhapus">
+	 			 <a href="#" class="close-button-ubah" title="Close">x</a>
+	 			 <form method="POST" action="daftarmeja.php">
+	 			 <br><p>Masukkan No Meja</p><input type="text" name="no_meja"  required />
+	 			 <br><p>Anda yakin ingin menghapus?</p>
+	 			 </select>
+	 			 <br><input type="submit" name="Hapus" value="Hapus"><br/>
+	 		 </form>
+	 		 </div>
+	  </div>
+	 		<?php
+	 				if(isset($_POST['Hapus'])){
+	 					$id_menu = $_POST['no_meja'];
+	 					$sql = mysqli_query($mysqli, "DELETE from meja WHERE no_meja = '$id_menu'");
+	 					echo "<b>"."Hapus meja ".$id_menu." berhasil"."</b>";
+	 				}
+	 		 ?>
 								</header>
-                                
+
 								<div class="agileits-box-body clearfix"></div>
 							</div>
 						</div>
@@ -513,7 +518,7 @@ echo '
         <div class="agileits-box-body clearfix"></div>
 		  <div class="clearfix"> </div>
 				</div>
-                
+
                 	<div class="agil-info-calendar">
 		<div class="col-md-6 w3agile-notifications">
 			<div class="notifications">
@@ -523,7 +528,7 @@ echo '
 						Tambah Meja
 					</header>
 					<div class="notify-w3ls">
-        
+
   <form method="POST" action="">
 <br><p>No Meja:</p><input type="number" name="no_meja"  required />   <br />
 
@@ -542,8 +547,8 @@ echo '
 	      }
 	  }
 ?>
- 
-</form>               
+
+</form>
 					</div>
 
 				<!--notification end-->
