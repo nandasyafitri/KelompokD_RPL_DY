@@ -1,3 +1,14 @@
+<?php
+	session_start();
+	if($_SESSION['login']==false){
+		header('location: loginkaryawan.php');
+	}
+?>
+<?php
+<<<<<<< HEAD
+	echo "ini halaman admin. Welcome"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -215,3 +226,7 @@ table#t01 th {
   <script src="contactform/contactform.js"></script>
   </body>
   </html>
+=======
+	echo "ini halaman admin"
+?>
+>>>>>>> Praktikum_Budi
