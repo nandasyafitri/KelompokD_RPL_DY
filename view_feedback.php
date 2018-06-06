@@ -80,7 +80,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		}
 		.navbar-default, .nav-justified li{
 			border-radius:0px;
+
 		}
+		.dropbtn {
+				background-color: #e96147;
+				color: #000;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+
+		}
+
+		.dropdown {
+				position: relative;
+				display: inline-block;
+
+
+		}
+
+		.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;		}
+
+		.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+
+
+		}
+
+		.dropdown-content a:hover {background-color: #e96147}
+
+		.dropdown:hover .dropdown-content {
+				display: block;
+		}
+
+		.dropdown:hover .dropbtn {
+				background-color: #e96147;
+		}
+
     </style>
 </head>
 
@@ -88,7 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--/banner-bottom-->
     <div class="w3_agilits_banner_bootm">
         <!-- header -->
-        <div class="container">
+				<div class="container">
             <div class="w3_agile_logo">
                 <h1>
                     <a href="#">
@@ -113,15 +158,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="m_nav_item menu__item" id="moble_nav_item_2">
                                 <a href="pesan_menu.php" class="menu__link"> Pesan Menu </a>
                             </li>
-                            <li class="m_nav_item menu__item" id="moble_nav_item_3">
-                                <a href="#lihat_feedback" class="menu__link">Feedback</a>
+														<li class="m_nav_item menu__item" id="moble_nav_item_2">
+                                <a href="rincian_order.php" class="menu__link"> Rincian PEsanan </a>
+                            </li>
+														<li class="m_nav_item menu__item" id="moble_nav_item_3">
+																<div class="dropdown">
+		  													<button class="dropbtn">FEEDBACK</button>
+		  												<div class="dropdown-content">
+															    <a href="view_feedback.php">Lihat Feedback</a>
+															    <a href="feedback.php">TuliS Feedback</a>
+		  												</div>
+														</div>
                             </li>
                             <li class="m_nav_item menu__item" id="moble_nav_item_4">
                               <?php $username=$_SESSION['username']; ?>
                                 <a href="#" class="menu__link">@<?php echo $username; ?></a>
                             </li>
-                            <li class="m_nav_item menu__item" id="moble_nav_item_5">
-                                <a href="index.php" class="menu__link">Logout</a>
+                            <li class="m_nav_item menu__item" id="moble_nav_item_3">
+																<div class="dropdown">
+		  													<button class="dropbtn">Akun Saya</button>
+		  												<div class="dropdown-content">
+															    <a href="logout.php">Logout</a>
+															    <a href="reset_password.php">Rubah Password</a>
+		  												</div>
+														</div>
                             </li>
                         </ul>
                     </nav>
@@ -144,78 +204,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!--//banner-bottom-->
-    <!--/banner-section-->
-    <div id="demo-1" data-zs-src='["asset_/images/b3.jpg","asset_/images/b5.jpg","asset_/images/b1.jpg","asset_/images/b2.jpg","asset_/images/b4.jpg"]' data-zs-overlay="dots">
-        <div class="demo-inner-content">
-
-            <!--/banner-info-->
-            <div class="baner-info">
-                <h4>Selamat Datang di </h4>
-                <h3>
-                    D'Caffein</h3>
-                <p>Kami menyediakan berbagai varian menu yang kekinian</p>
-                <a class="hvr-rectangle-out w3_play_icon1" href="#menu">Pesan Menu</a>
-            </div>
-            <!--/banner-ingo-->
-        </div>
-    </div>
-    <!--/banner-section-->
-    <!--about -->
-    <div id="about" class="wthree-about section-w3ls">
-        <div class="container">
-            <div class="agileits-banner-grids text-center">
-                <div class="banner-bottom-girds">
-                    <div class="services_agile" id="services">
-                        <div class="services-top">
-                            <div class="col-md-3 col-sm-4 col-xs-4 service_grid text-center">
-                                <div class="serviceinfo_agile ih-item circle colored effect17 active">
-                                    <div class="img">
-                                        <img src="asset_/images/frap.jpg" class="img-responsive" alt="img">
-                                    </div>
-                                    <div class="info">
-                                        <p>Frappucino</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-4 service_grid text-center">
-                                <div class="serviceinfo_agile ih-item circle colored effect17">
-                                    <div class="img">
-                                        <img src="asset_/images/green.jpg" class="img-responsive" alt="img">
-                                    </div>
-                                    <div class="info">
-                                        <p>Green Tea Latte</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-4 service_grid text-center">
-                                <div class="serviceinfo_agile ih-item circle colored effect17">
-                                    <div class="img">
-                                        <img src="asset_/images/vanilla.jpg" class="img-responsive" alt="img">
-                                    </div>
-                                    <div class="info">
-                                        <p>Vanilla Latte</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-xs-4 service_grid text-center">
-                                <div class="serviceinfo_agile ih-item circle colored effect17">
-                                    <div class="img">
-                                        <img src="asset_/images/epr.jpg" class="img-responsive" alt="img">
-                                    </div>
-                                    <div class="info">
-                                        <p>Espresso</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //about -->
-
 <!--menu-->
 
 <!--//menu-->
